@@ -24,10 +24,10 @@ AWS・GCPといったクラウドサービスやTerraform・CloudFormationによ
 - Go, TypeScript, Kotlin, Python, Java, JavaScript, Solidity, Bash, PHP, SQL
 
 #### フレームワーク・ライブラリ
-- Echo, Gin, Spring Boot, React, Node.js, Express, CakePHP,
+- Echo, Gin, Spring Boot, React, Next.js, Node.js, Express, CakePHP,
 
 #### インフラ・クラウド
-- AWS（EC2, ECS, Fargate, RDS, Lambda, SQS, SNS, S3, Route53, ALB, AWS Batch, Step Functions, CloudWatch, EventBridge, KMS, CloudFormation, CDK）
+- AWS（EC2, ECS, Fargate, RDS, Lambda, SQS, SNS, S3, Route53, ALB, AWS Batch, Step Functions, CloudWatch, EventBridge, KMS, CloudFormation, DMS, CDK）
 - GCP（Cloud Pub/Sub, Cloud Spanner, Cloud Logging, Cloud Scheduler, Cloud Tasks, Cloud Storage, AppEngine）
 - Docker, Terraform, Kubernetes, Ansible, Nomad
 
@@ -35,13 +35,16 @@ AWS・GCPといったクラウドサービスやTerraform・CloudFormationによ
 - GitHub Actions, CircleCI, Grafana, Prometheus, CloudWatch, Datadog, Sentry
 
 #### データベース・分析
-- DynamoDB, MongoDB, MySQL, PostgreSQL, Oracle Database, Cloud SQL, Cloud Spanner, Firestore, Dune Query (列指向DB)
+- DynamoDB, MongoDB, MySQL, PostgreSQL, Oracle Database, Cloud SQL, Cloud Spanner, Firestore, Dune (SQLによるブロックチェーン分析)
 
 #### API・通信
 - REST, GraphQL, OpenAPI (Swagger), gRPC
 
+#### AI
+- Claude Code, Cline, CodeRabbit, Copilot
+
 #### その他ツール
-- Twilio, wire, gqlgen, Protobuf, Firebase Auth, systemd, Selenium（Selenide）, Jest, TypeORM, senarigo
+- Twilio, Wire, gqlgen, Protobuf, Firebase Auth, systemd, Selenium（Selenide）, Jest, TypeORM, senarigo, Locust
 
 ---
 <div style="page-break-before:always"></div>
@@ -50,18 +53,48 @@ AWS・GCPといったクラウドサービスやTerraform・CloudFormationによ
 
 ### フリーランス（2019年10月～現在）
 
+**期間：2025年6月～現在**
+
+**案件名：大規模ECサイトのリプレイス**
+
+#### 担当業務
+お気に入り関連機能のリプレイスにおいて、以下を担当
+ - お気に入り機能の要件を踏まえたテーブル設計
+ - フロントエンド（PC／スマホ）、BFF、gRPCサーバの設計・実装を一気通貫で担当
+ - AWS DMSを用いたデータ移行タスクの設計・構築
+ - Locustを用いた負荷試験シナリオの作成および実施
+
+商品データ移行において、以下を担当
+ - テーブル設計のための現行システム仕様調査
+ - 商品関連データのテーブル設計
+
+#### 習得スキル
+- Next.jsによるフロントエンド開発
+- AWS DMSを用いたデータ移行
+- Locustを用いた負荷試験シナリオの作成及び実施
+
+#### 成果
+- 本番データ移行においてサービス停止なしでの移行を実現
+  単純な変換で済むデータはDMSを利用し、複雑な変換が必要なデータは専用バッチ（AWS Batch）で処理する構成を設計
+  事前にstg環境でデータ整合性および性能検証を実施し、本番移行時のリスク低減に貢献
+
+#### 使用技術
+Go | PHP | GraphQL | gRPC | AWS DMS | CloudFront | AWS Batch | ECS | ALB | Aurora | Terraform | GitHub Actions | Datadog | Claude Code | CodeRabbit
+
+---
+
 **期間：2024年12月～2025年5月**
 
 **案件名：自動運転システム開発**
 
 #### 担当業務
-自動運転システム向けのデータパイプラインやAPI、CLIツールの設計・実装。
-- 以下を並列で実行するパイプラインの構築。
-  - 学習用データセットのメタデータの抽出・登録。
-  - 学習用データセットの画像データから動画を生成。
-- S3 Object VersionIDを用いて、学習用データの整合性を保つ対応。
-- APIエンドポイント追加。
-- CLIツール機能追加。
+自動運転システム向けのデータパイプラインやAPI、CLIツールの設計・実装
+- 以下を並列で実行するパイプラインの構築
+  - 学習用データセットのメタデータの抽出・登録
+  - 学習用データセットの画像データから動画を生成
+- S3 Object VersionIDを用いて、学習用データの整合性を保つ対応
+- APIエンドポイント追加
+- CLIツール機能追加
 
 #### 習得スキル
 - CloudFormationによるインフラ構築
@@ -75,7 +108,7 @@ AWS・GCPといったクラウドサービスやTerraform・CloudFormationによ
   GitHub Actionsでデプロイする際に、複数リソースのデプロイをまとめたmakeコマンドを呼び出すようになっていたため、順次のデプロイとなっており、時間がかかっていた。各リソースのデプロイをGitHub Actionsで並列に実行するように変更し、デプロイ時間を半分以下に短縮した。
 
 #### 使用技術
-Go | Python | Step Functions | Lambda | S3 | SQS | AWS Batch | ECS | ALB | Aurora | CloudFormation | Github Actions | Datadog | Sentry
+Go | Python | Step Functions | Lambda | S3 | SQS | AWS Batch | ECS | ALB | Aurora | CloudFormation | GitHub Actions | Datadog | Sentry
 
 ---
 
@@ -84,13 +117,13 @@ Go | Python | Step Functions | Lambda | S3 | SQS | AWS Batch | ECS | ALB | Auror
 **案件名：ブロックチェーンゲーム開発**
 
 #### 担当業務
-ブロックチェーンゲームのブロックチェーンアクセス機能の構築。
-- 企画サイドや他のゲーム機能チームと要件をすり合わせ、担当タスクを明確化。
-- SQS、Lambda、ECS、DynamoDB、SNSなどを用いたインフラの構築。
-- CloudWatch Alarmによる監視機能の構築。
-- Github ActionsによるCI/CDの構築。
-- Lambda関数やブロックチェーンイベントのリスナーをNode.jsで実装。
-- NFTコントラクト、NFT制御用のコントラクトの作成。
+ブロックチェーンゲームのブロックチェーンアクセス機能の構築
+- 企画サイドや他のゲーム機能チームと要件をすり合わせ、担当タスクを明確化
+- SQS、Lambda、ECS、DynamoDB、SNSなどを用いたインフラの構築
+- CloudWatch Alarmによる監視機能の構築
+- GitHub ActionsによるCI/CDの構築
+- Lambda関数やブロックチェーンイベントのリスナーをNode.jsで実装
+- NFTコントラクト、NFT制御用のコントラクトの作成
 
 #### 習得スキル
 - Solidityによるコントラクト作成
@@ -101,7 +134,7 @@ Go | Python | Step Functions | Lambda | S3 | SQS | AWS Batch | ECS | ALB | Auror
 - ブロックチェーンはトランザクションを実行するアドレス単位では直列実行になってしまうため、パフォーマンスに難があったが、アドレスを増やして並列で実行できる仕組みを構築し、パフォーマンスを改善した。
 
 #### 使用技術
-TypeScript | Solidity | SQS | Lambda | DynamoDB | CloudWatch | EventBridge | SNS | ECS | KMS | ALB | RDS | Terraform | Github Actions
+TypeScript | Solidity | SQS | Lambda | DynamoDB | CloudWatch | EventBridge | SNS | ECS | KMS | ALB | RDS | Terraform | GitHub Actions
 
 ---
 
@@ -110,22 +143,22 @@ TypeScript | Solidity | SQS | Lambda | DynamoDB | CloudWatch | EventBridge | SNS
 **案件名：暗号資産コピートレードシステム開発**
 
 #### 担当業務
-暗号資産インデックスファンド作成機能を担当。
-- 追跡対象とするアドレスとそのウェイトを選びインデックスファンドを作成する機能の実装。
-- ファンドのポートフォリオ割合や収益率を取得する機能の実装。
-- Dune Queryにてファンドのポートフォリオや取引量、取引手数料を分析するためのクエリの作成。
+暗号資産インデックスファンド作成機能を担当
+- 追跡対象とするアドレスとそのウェイトを選びインデックスファンドを作成する機能の実装
+- ファンドのポートフォリオ割合や収益率を取得する機能の実装
+- Dune (ブロックチェーン版のBigQuery) にてファンドのポートフォリオや取引量、取引手数料を分析するためのクエリの作成
 
 #### 習得スキル
 - Polygonネットワークやトランザクション仕様についての知識
 - MongoDBを用いたサービス開発
-- 列指向データベース (Dune Query) を用いたデータ分析
+- 列指向データベース (Dune) を用いたデータ分析
 
 #### 成果
 - 暗号資産インデックスファンドに係る機能は、仕様が複雑で処理量が多いものであったが、適切に共通化やコンポーネント分割を行っていたため、以後に発生した仕様変更にも迅速に対応できた。
-- Dune Queryでデータ分析を行う際に、Polygonトランザクションの仕様を調査して集計に必要な情報を抽出し、クエリを構築できた。また、集計データ量は膨大なものであったが、列指向データベースの性質を理解し、最大でも10秒程度で値が返るようにクエリをチューニングできた。
+- Duneでデータ分析を行う際に、Polygonトランザクションの仕様を調査して集計に必要な情報を抽出し、クエリを構築できた。また、集計データ量は膨大なものであったが、列指向データベースの性質を理解し、最大でも10秒程度で値が返るようにクエリをチューニングできた。
 
 #### 使用技術
-TypeScript | Moralis | Alchemy | MongoDB | Redis | Fargate | Dune Query
+TypeScript | Moralis | Alchemy | MongoDB | Redis | Fargate | Dune
 
 ---
 
@@ -134,11 +167,11 @@ TypeScript | Moralis | Alchemy | MongoDB | Redis | Fargate | Dune Query
 **案件名：暗号資産サービス開発**
 
 #### 担当業務
-業務用暗号資産ウォレットシステムの開発。
-- 暗号資産XYM用の以下機能の実装。
-  アカウントの作成、マルチシグアカウントへの昇格、マルチシグでの送金、ノードとウォレットシステムとの残高同期。
-- 暗号資産IOST用の以下機能の実装。
-  ノードとウォレットシステムとの残高同期。
+業務用暗号資産ウォレットシステムの開発
+- 暗号資産XYM用の以下機能の実装
+  アカウントの作成、マルチシグアカウントへの昇格、マルチシグでの送金、ノードとウォレットシステムとの残高同期
+- 暗号資産IOST用の以下機能の実装
+  ノードとウォレットシステムとの残高同期
 
 #### 習得スキル
 - Cloud Spannerを用いたサービス開発およびテーブル設計
@@ -167,8 +200,8 @@ Go | Kubernetes | Cloud Pub/Sub | Cloud Spanner | Cloud Logging | Cloud Schedule
 - Terraformによるインフラのコード化
 
 #### 成果
-- リファクタリングの過程でマイグレーションツールが混在した状態になっていたものをTypeormに統一。
-- Terraformでコードが冗長になっていた箇所をModule化するなどして改善したり、一部Terraform化されていなかったサービスをコード化したりとインフラ周りも改善も実施。
+- リファクタリングの過程でマイグレーションツールが混在した状態になっていたものをTypeORMに統一。
+- Terraformでコードが冗長になっていた箇所をModule化するなどして改善したり、一部Terraform化されていなかったサービスをコード化したりとインフラ周りの改善も実施。
 
 #### 使用技術
 Go | TypeScript | Echo | Node.js | Kubernetes | Terraform
@@ -193,7 +226,7 @@ Go | TypeScript | Echo | Node.js | Kubernetes | Terraform
 - 機能が複雑なため、煩雑になってしまっていたUTコードを修正して可読性の向上に寄与。
 
 #### 使用技術
-Go | Kotlin | Gin | Spring Boot | Docker | AppEngine | Cloud SQL | Cloud Logging | Cloud Tasks | Cloud Storage | Firebase Auth | Cloud Firestore | GraphQL
+Go | Kotlin | Gin | Spring Boot | Docker | App Engine | Cloud SQL | Cloud Logging | Cloud Tasks | Cloud Storage | Firebase Auth | Cloud Firestore | GraphQL
 
 ---
 
@@ -215,7 +248,7 @@ Go | Kotlin | Gin | Spring Boot | Docker | AppEngine | Cloud SQL | Cloud Logging
 - Azure ADのSSOの実現方法を調査し、実装した。
 
 #### 使用技術
-TypeScript | Node.js | Express | Nomad | Azure AD | Github Actions | Jest | Twilio
+TypeScript | Node.js | Express | Nomad | Azure AD | GitHub Actions | Jest | Twilio
 
 ---
 
@@ -240,7 +273,7 @@ TypeScript | Node.js | Express | Nomad | Azure AD | Github Actions | Jest | Twil
 - 原因特定が難しく、しばらく残っていた不具合を積極的に調査して解決した。
 
 #### 使用技術
-Go | Kotlin | Gin | Spring Boot | Docker | AppEngine | Cloud SQL | Cloud Logging | Cloud Tasks | Cloud Storage | Firebase Auth | Cloud Firestore | GraphQL
+Go | Kotlin | Gin | Spring Boot | Docker | App Engine | Cloud SQL | Cloud Logging | Cloud Tasks | Cloud Storage | Firebase Auth | Cloud Firestore | GraphQL
 
 ---
 
@@ -268,7 +301,7 @@ Go | Kotlin | Gin | Spring Boot | Docker | AppEngine | Cloud SQL | Cloud Logging
 - Goによる開発だけでなく、AWSやAnsible、systemdなどを用いた環境構築も幅広く担当し、少ない人員でサービスを構築することに貢献した。
 
 #### 使用技術
-Go | Buffalo | Amazon CDK | EC2 | RDS | Lambda | SES | KMS | CodeCommit | CodeBuild | Prometheus
+Go | Buffalo | AWS CDK | EC2 | RDS | Lambda | SES | KMS | CodeCommit | CodeBuild | Prometheus
 
 ---
 
@@ -306,7 +339,7 @@ Java | React/Redux | jQuery | CakePHP | S3 | Nginx | Memcached | Redis
 - 営業支援WebシステムやAPIの実装
 
 #### 習得スキル
-- PlayFrameworkを用いたAPIの実装
+- Play Frameworkを用いたAPIの実装
 - Spring Bootを用いたバッチ処理の実装
 - TypeScriptを用いたフロントエンドの開発
 - React/Reduxを用いたフロントエンドの開発
@@ -317,7 +350,7 @@ Java | React/Redux | jQuery | CakePHP | S3 | Nginx | Memcached | Redis
   - 膨大な物件データをクローリングする際に、並列処理を用いて夜間に処理が終わるように実装した。
 
 #### 使用技術
-Java | TypeScript | React/Redux | PlayFramework | Spring Boot | selenium
+Java | TypeScript | React/Redux | Play Framework | Spring Boot | Selenium
 
 ---
 
@@ -368,7 +401,7 @@ Java | TypeScript | React/Redux | PlayFramework | Spring Boot | selenium
 #### 習得スキル
 - 設計スキル
 - Java8によるビジネスロジックの実装
-- Junitによる単体テスト（Mockライブラリ使用）
+- JUnitによる単体テスト（Mockライブラリ使用）
 
 #### 成果
 - JenkinsによってCIが実施されていたためUTにこだわり、可読性および保守性の高いテストコードを作成した。
