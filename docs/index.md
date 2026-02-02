@@ -102,10 +102,8 @@ Go | PHP | GraphQL | gRPC | AWS DMS | CloudFront | AWS Batch | ECS | ALB | Auror
 - AWS Batchジョブの設計・構築
 
 #### 成果
-- サービス間の依存関係の整理
-  APIとパイプラインは別々のリポジトリで管理されていたが、循環依存になっていた。SQSとLambda経由でパイプラインを実行させるようにすることで、サービス間の依存関係を整理した。
-- デプロイ時間の短縮
-  GitHub Actionsでデプロイする際に、複数リソースのデプロイをまとめたmakeコマンドを呼び出すようになっていたため、順次のデプロイとなっており、時間がかかっていた。各リソースのデプロイをGitHub Actionsで並列に実行するように変更し、デプロイ時間を半分以下に短縮した。
+- APIとパイプラインは別々のリポジトリで管理されていたが、循環依存になっていた。SQSとLambda経由でパイプラインを実行させるようにすることで、サービス間の依存関係を整理した。
+- GitHub Actionsでデプロイする際に、複数リソースのデプロイをまとめたmakeコマンドを呼び出すようになっていたため、順次のデプロイとなっており、時間がかかっていた。各リソースのデプロイをGitHub Actionsで並列に実行するように変更し、デプロイ時間を半分以下に短縮した。
 
 #### 使用技術
 Go | Python | Step Functions | Lambda | S3 | SQS | AWS Batch | ECS | ALB | Aurora | CloudFormation | GitHub Actions | Datadog | Sentry
